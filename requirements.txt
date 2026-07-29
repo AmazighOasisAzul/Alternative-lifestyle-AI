@@ -1,0 +1,21 @@
+# Core
+fastapi==0.104.1
+uvicorn==0.24.0
+requests==2.31.0
+beautifulsoup4==4.12.2
+langchain==0.1.16
+langchain-community==0.0.29
+chromadb==0.4.22
+sentence-transformers==2.2.2
+transformers==4.40.0
+torch==2.2.2
+streamlit==1.32.0
+pydantic==2.5.3
+
+# Web Scraping
+pytube==15.0.0
+youtube-transcript-api==0.6.1
+lxml==4.9.4
+
+# Image Handling
+Pillow==10.2.0
