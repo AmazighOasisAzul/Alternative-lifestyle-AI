@@ -4,11 +4,12 @@
 
 ## Main way to open the AI
 
-1. Download the ZIP from the green **Code** button -> extract the folder
-2. Run the install script for your OS:
+1. Download from the [Releases page](https://github.com/AmazighOasisAzul/Alternative-lifestyle-AI/releases) (preferred)
+2. Or: Download the ZIP from the green **Code** button -> extract the folder
+3. Run the install script for your OS:
    - **Windows**: double-click `install_and_run.bat`
    - **Mac**: right-click `install_and_run.sh` -> Open (or run it in Terminal)
-3. The script creates a virtual environment, installs dependencies, and launches the terminal AI.
+4. The script creates a virtual environment, installs dependencies, and launches the terminal AI.
 
 That is the intended first-run path.
 
