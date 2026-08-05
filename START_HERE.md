@@ -1,108 +1,41 @@
-# START HERE - Alternative Lifestyle AI
+# START HERE – Alternative Lifestyle AI
 
-## Quick Start (5 minutes)
+## Main way to open the AI (Windows / Mac)
 
-### 1. Install Dependencies
+1. Extract the downloaded folder.
+2. Run the install script for your OS:
+   - **Windows**: double-click `install_and_run.bat`
+   - **Mac**: right-click `install_and_run.sh` -> Open (or run it in Terminal)
+3. The script creates a virtual environment, installs dependencies, and launches the terminal AI.
 
-Windows:
-```cmd
+That is the intended first-run path.
+
+## Manual steps (if the script fails)
+
+```bash
+cd Alternative-lifestyle-AI-main   # or the name of the extracted folder
 python -m venv venv
+
+# Windows
 venv\Scripts\activate
-pip install -r requirements.txt
-```
 
-Mac/Linux:
-```bash
-python3 -m venv venv
+# Mac
 source venv/bin/activate
+
 pip install -r requirements.txt
-```
-
-### 2. Test the AI
-```bash
-python cli.py "What is terrain theory?"
-```
-
-### 3. Interactive Mode
-```bash
 python cli.py -i
 ```
 
-Type 'quit' to exit.
+## Optional: first data crawl + index
 
----
-
-## Full Setup (30-60 minutes)
-
-### 1. Crawl Data
 ```bash
-python crawler.py --max-pages 100
-```
-
-### 2. Index
-```bash
+python crawler.py --max-pages 200
 python indexer.py
 ```
 
----
+Then run `python cli.py -i` again.
 
-## Usage
-
-### CLI
-```bash
-python cli.py -i           # Interactive
-python cli.py "query"    # Single query
-python cli.py --mode fast "q"  # Mode
-python cli.py --no-last-resort "q"  # No incel forums
-```
-
-### Web
-```bash
-streamlit run web_interface.py
-```
-
-### API
-```bash
-uvicorn api:app --reload
-```
-
----
-
-## Features
-
-- Hybrid Search (Dense + BM25)
-- Recency Weighting
-- Metadata Filters
-- Last Resort Handling
-- Grounded Claims
-- Concrete Protocols
-- Anti-Block Measures
-- PubMed Connectors
-- 40+ Multireddit Sources
-
----
-
-## Configuration
-
-Edit config.py for sources, RAG settings, Reddit OAuth.
-
----
-
-## File Structure
-
-See README.md for complete structure.
-
----
-
-## Troubleshooting
-
-- Module not found: Activate venv, pip install -r requirements.txt
-- No torch: pip install torch
-- Vector DB: Run crawler.py then indexer.py
-- Reddit: Set REDDIT_CONFIG in config.py
-
----
-
-## License
-
-MIT License - Copyright 2026 AzulWEBG Foundation
+## Notes
+- There is no standalone .exe yet. The install scripts are the current entry point.
+- UI work is separate and not required for this step.
+- Private Reddit communities only work if the authenticated account is already a member and OAuth credentials are set in config.
