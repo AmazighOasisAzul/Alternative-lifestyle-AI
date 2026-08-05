@@ -11,7 +11,7 @@ if not exist "venv" (
 )
 
 echo Activating virtual environment...
-call venvScriptsactivate.bat
+call venv\Scripts\activate.bat
 
 echo Installing / updating dependencies...
 python -m pip install --upgrade pip
