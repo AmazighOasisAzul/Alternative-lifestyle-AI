@@ -4,6 +4,8 @@
 
 > Bernard was right. The microbe is nothing, the terrain is everything.
 
+**Supported platforms: Windows and Mac only**
+
 ## DISCLAIMER
 
 THIS IS A PERSONAL AI PROJECT.
@@ -40,47 +42,39 @@ It maintains a Faustian perspective: acknowledging struggle while emphasizing th
 - PubMed Connector: DOI, title, abstract, year, key findings extraction
 - Structured Output: Protocols, checkpoints, risk notes in responses
 
-## Quick Start
-
-See START_HERE.md for comprehensive setup instructions.
-
 ## Installation
 
-### Option 1: pip install (Recommended)
+### Preferred: Download from Releases
 
-```bash
-git clone https://github.com/AmazighOasisAzul/Alternative-lifestyle-AI.git
-cd Alternative-lifestyle-AI
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
+Download the latest release from the [Releases page](https://github.com/AmazighOasisAzul/Alternative-lifestyle-AI/releases).
 
-### Option 2: Direct Download
+### Fallback: Download from Code
 
-Download the repository as a ZIP file and extract it.
-
-### Option 3: One-Click Install
-
-Windows: Run install.bat
-Linux/macOS: Run install.sh
+Download the ZIP from the green **Code** button -> extract the folder.
 
 ## Usage
 
 ### Terminal AI (CLI)
 
+**Windows**: double-click `install_and_run.bat`
+**Mac**: right-click `install_and_run.sh` -> Open (or run it in Terminal)
+
+The script will:
+1. Create a virtual environment
+2. Install dependencies
+3. Launch the terminal AI
+
+Or run manually:
+
 ```bash
-# Interactive mode
+# Windows
+venv\Scripts\activate
+
+# Mac
+source venv/bin/activate
+
+pip install -r requirements.txt
 python cli.py -i
-
-# Single query
-python cli.py "What is terrain theory?"
-
-# Deep mode
-python cli.py --mode deep "Explain the blackpill"
-
-# Disable last resort sources
-python cli.py --no-last-resort "Tell me about looksmaxxing"
 ```
 
 ### Web Interface
@@ -99,16 +93,11 @@ uvicorn api:app --reload
 
 Then send POST requests to http://localhost:8000/query
 
-### Run Scripts
-
-Windows: Run run.bat
-Linux/macOS: Run run.sh
-
 ## First Run Setup
 
 ```bash
 # Crawl all sources
-python crawler.py --max-pages 100
+python crawler.py --max-pages 200
 
 # Index the crawled data
 python indexer.py
@@ -117,96 +106,39 @@ python indexer.py
 ## Data Sources
 
 This AI (internally named Blackpill Lifestyle AI) scrapes content from:
+- **Diet**: aajonus.net, jackkruse.com, realmilk.com, raypeat.com, primaldiet.net, eatwild.com, nourishingourchildren.org
+- **Looksmaxxing**: looksmaxxing.com, mewing.co, looksmax.gg, looksmax.org, forum.looksmaxxing.com
+- **Blackpill**: theredarchive.com, incels.wiki, evolutionary.org, masculineprinciple.blogspot.com, harmonily.com, scientificsean.com/wiki
+- **Incel Forums (Last Resort)**: incels.is, schaduw.net
+- **Pharmacology**: examine.com, erowid.org
+- **Bimbofication**: bimbolover.com, Instagram/Twitter
+- **Fitness**: smartworkout.app
+- **Research**: Earth.com, Skool.com, Nutria.onl
+- **Adult Industry**: AVN Awards
+- **Wikipedia**: 50+ pages
+- **Reddit**: 40+ subreddits
+- **YouTube**: 9+ channels
+- **Scribd**: Key documents
+- **PubMed**: Scientific papers
 
-### Diet & Nutrition
-- aajonus.net
-- jackkruse.com
-- realmilk.com
-- raypeat.com
-- primaldiet.net
-- eatwild.com
-- nourishingourchildren.org
+## Philosophy
 
-### Looksmaxxing
-- looksmaxxing.com
-- mewing.co
-- looksmax.gg
-- looksmax.org
-- forum.looksmaxxing.com
+This AI operates on Terrain Theory principles:
+- The microbe is nothing, the terrain is everything
+- Genetics and biology are primary determinants
+- Physical optimization through all available means
+- Chemical optimization of human performance
+- Alternative knowledge and unconventional approaches
 
-### Blackpill & Manosphere
-- theredarchive.com
-- incels.wiki
-- evolutionary.org
-- masculineprinciple.blogspot.com
-- harmonily.com
-- scientificsean.com/wiki
+Blackpill Realism: Acknowledges harsh truths while providing actionable information for those who choose to engage with reality.
 
-### Incel Forums (LAST RESORT ONLY)
-- incels.is/forums/must-read-content.23/
-- schaduw.net
-
-### Pharmacology
-- examine.com
-- erowid.org
-
-### Bimbofication
-- bimbolover.com
-- Instagram (social media scraper)
-- Twitter/X (social media scraper)
-
-### Fitness
-- smartworkout.app
-
-### Research
-- Earth.com
-- Skool.com
-- Nutria.onl
-- PubMed (scientific papers)
-
-### Adult Industry
-- AVN Awards
-
-### Social Media
-- Scribd (document parser)
-
-### Knowledge Bases
-- Wikipedia: 50+ pages
-- Reddit: 40+ subreddits
-- YouTube: 9+ channels
-
-## Technical Implementation
-
-### RAG System
-- Hybrid Search: ChromaDB (dense vectors) + rank_bm25 (keyword)
-- Recency Weighting: Exponential decay with configurable half-life
-- Metadata Filters: Source, category, date, subreddit filtering
-- DualModeRetriever: Primary + last resort source separation
-
-### Crawling & Scraping
-- Reddit OAuth2 via PRAW
-- Multireddit auto-extraction
-- Anti-block: UA rotation, jittered delays, exponential backoff
-- Image extraction and organization by category
-- Scribd document parsing
-- Social media scraping (Instagram, Twitter)
-
-### Visual Knowledge Base
-- Image indexing with metadata
-- Category-based organization
-- ChromaDB integration for visual search
-
-### Generation
-- Grounded claims with source references required
-- Structured output: protocols, checkpoints, risk notes
-- Faustian approach to sensitive topics
-- NO Debate Mode
+Faustian Approach: When referencing difficult topics (including incel communities), the AI acknowledges the struggle but emphasizes the attempt to improve rather than giving up.
 
 ## Project Structure
 
 Alternative-lifestyle-AI/
 ├── README.md                    # Project overview
-├── START_HERE.md                # Comprehensive setup guide
+├── START_HERE.md                # Setup guide
 ├── LICENSE                      # MIT License
 ├── .gitignore
 ├── requirements.txt
@@ -224,13 +156,11 @@ Alternative-lifestyle-AI/
 ├── indexer.py                   # Data indexer
 ├── Dockerfile
 ├── docker-compose.yml
-├── install.bat                  # Windows one-click install
-├── install.sh                   # Linux/macOS one-click install
-├── run.bat                      # Windows run script
-├── run.sh                       # Linux/macOS run script
+├── install_and_run.bat          # Windows install/run
+├── install_and_run.sh           # Mac install/run
 ├── .github/
 │   └── workflows/
-│       └── test.yml             # GitHub Actions
+│       └── ci.yml               # GitHub Actions
 └── data/                        # Local data storage (gitignored)
     ├── vector_db/
     ├── images/
@@ -247,19 +177,6 @@ Edit config.py to:
 - Configure PubMed connector
 - Adjust hybrid search weights
 - Modify recency weighting parameters
-
-## Philosophy
-
-This AI operates on Terrain Theory principles:
-- The microbe is nothing, the terrain is everything
-- Genetics and biology are primary determinants
-- Physical optimization through all available means
-- Chemical optimization of human performance
-- Alternative knowledge and unconventional approaches
-
-Blackpill Realism: Acknowledges harsh truths while providing actionable information for those who choose to engage with reality.
-
-Faustian Approach: When referencing difficult topics (including incel communities), the AI acknowledges the struggle but emphasizes the attempt to improve rather than giving up.
 
 ## License
 
