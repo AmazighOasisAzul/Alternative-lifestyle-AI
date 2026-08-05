@@ -113,6 +113,7 @@ Answer:"""
             title = metadata.get('title', 'No title')
             date = metadata.get('date', '')
             content = item.get('content', '')[:1000]
+            score = item.get('score', 0)
             
             category_label = {
                 'diet': '[DIET]', 'looksmaxxing': '[LOOKSMAXXING]', 
@@ -126,6 +127,7 @@ Answer:"""
             parts.append(f"{category_label} Source {i} - {source}: {title}{date_str}
 {content}
 
+")
 ")
         
         return "\n".join(parts)
