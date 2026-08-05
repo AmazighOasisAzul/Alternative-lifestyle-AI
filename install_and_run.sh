@@ -2,7 +2,7 @@
 cd "$(dirname "$0")"
 
 echo "========================================"
-echo " Alternative Lifestyle AI - Setup"
+echo " Alternative Lifestyle AI - Setup (Mac only)"
 echo "========================================"
 
 if [ ! -d "venv" ]; then
