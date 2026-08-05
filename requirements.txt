@@ -19,3 +19,13 @@ lxml==4.9.4
 
 # Image Handling
 Pillow==10.2.0
+
+# Hybrid Search (BM25)
+rank-bm25==0.2.2
+
+# Reddit API
+praw==7.7.1
+
+# Development
+black>=24.0.0
+flake8>=6.1.0
