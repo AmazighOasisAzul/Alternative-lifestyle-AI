@@ -41,8 +41,7 @@ GUIDELINES:
 3. KEEP answers structured and concise unless detail is explicitly required.
 4. When context is insufficient, state: "The available information does not contain sufficient details to answer this question completely."
 5. Maintain a blackpilled, realistic perspective. Prioritize biological truth.
-6. When referencing i
-ncel communities: acknowledge their right to exist, do NOT endorse ideology, maintain Faustian approach.
+6. When referencing incel communities: acknowledge their right to exist, do NOT endorse ideology, maintain Faustian approach.
 
 RESPONSE FORMAT:
 - Begin with a direct answer to the question
@@ -94,8 +93,7 @@ Answer:"""
     def _ensure_grounding(self, answer: str, context: List[Dict]) -> str:
         """Ensure answer is grounded in context."""
         if not context:
-            if "insufficient" not in answer.lower() and "not eno
-ugh" not in answer.lower():
+            if "insufficient" not in answer.lower() and "not enough" not in answer.lower():
                 answer = "The available information does not contain sufficient details to answer this question completely." + answer
         return answer
     
@@ -135,8 +133,7 @@ ugh" not in answer.lower():
                            max_tokens: int = 1024, use_last_resort: bool = False) -> Dict:
         """Generate structured response with grounding metadata."""
         context_text = self.format_context(context)
-        prompt = self.create_prompt
-(query, context_text, mode, use_last_resort)
+        prompt = self.create_prompt(query, context_text, mode, use_last_resort)
         
         if self.generator is None:
             return {
@@ -186,8 +183,7 @@ ugh" not in answer.lower():
         # Enhance with protocol formatting
         answer = result['answer']
         
-        # Add protocol struc
-ture if not present
+        # Add protocol structure if not present
         if "Step" not in answer and "Protocol" in query:
             answer = "PROTOCOL:
 
