@@ -1,8 +1,10 @@
 # START HERE – Alternative Lifestyle AI
 
-## Main way to open the AI (Windows / Mac)
+**Supported platforms: Windows and Mac only**
 
-1. Extract the downloaded folder.
+## Main way to open the AI
+
+1. Download the ZIP from the green **Code** button -> extract the folder
 2. Run the install script for your OS:
    - **Windows**: double-click `install_and_run.bat`
    - **Mac**: right-click `install_and_run.sh` -> Open (or run it in Terminal)
