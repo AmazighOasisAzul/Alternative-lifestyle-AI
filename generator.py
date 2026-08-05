@@ -127,7 +127,6 @@ ugh" not in answer.lower():
             
             date_str = f" ({date})" if date else ""
             parts.append(f"{category_label} Source {i+1} - {source}: {title}{date_str}\n{content}\n\n")
-")
         
         return "\n".join(parts)
     
