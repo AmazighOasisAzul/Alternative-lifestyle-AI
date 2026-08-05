@@ -113,7 +113,6 @@ Answer:"""
             title = metadata.get('title', 'No title')
             date = metadata.get('date', '')
             content = item.get('content', '')[:1000]
-            score = item.get('score', 0)
             
             category_label = {
                 'diet': '[DIET]', 'looksmaxxing': '[LOOKSMAXXING]', 
