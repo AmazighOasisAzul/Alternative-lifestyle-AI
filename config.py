@@ -25,6 +25,7 @@ CRAWL_CONFIG = {
 
 # WEBSITE SOURCES
 WEBSITE_SOURCES = {
+    # Diet & Nutrition
     "aajonus": {
         "url": "https://aajonus.net/",
         "sitemap": "https://aajonus.net/sitemap.xml",
@@ -96,6 +97,16 @@ WEBSITE_SOURCES = {
         "category": "diet",
         "deep_crawl": True
     },
+    "lowtoxinforum": {
+        "url": "https://lowtoxinforum.com/",
+        "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, .entry-title, .post-title", "date": ".entry-date"},
+        "exclude": ["/tag/", "/category/", "/author/", "/feed/"],
+        "rate_limit": 2,
+        "category": "diet",
+        "deep_crawl": True
+    },
+    
+    # Fitness
     "smartworkout": {
         "url": "https://smartworkout.app/",
         "selectors": {"content": ".exercise-content, .workout-content, article, .content", "title": "h1, .exercise-title, .workout-title"},
@@ -105,6 +116,16 @@ WEBSITE_SOURCES = {
         "deep_crawl": True,
         "extract_images": True
     },
+    "thunders_place": {
+        "url": "https://thunders.place/",
+        "selectors": {"content": "article, .post-content, .content, .forum-post", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "fitness",
+        "deep_crawl": True
+    },
+    
+    # Looksmaxxing
     "looksmaxxing": {
         "url": "https://looksmaxxing.com/",
         "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
@@ -119,6 +140,134 @@ WEBSITE_SOURCES = {
         "category": "looksmaxxing",
         "deep_crawl": True
     },
+    "looksmax_cc": {
+        "url": "https://looksmax.cc/",
+        "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, h2, .thread-title"},
+        "rate_limit": 2,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "looksmax_gg": {
+        "url": "https://looksmax.gg/",
+        "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, .post-title, .thread-title"},
+        "rate_limit": 2,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "looksmax_gg_forums": {
+        "url": "https://looksmax.gg/forums/looksmaxing.7/",
+        "selectors": {"content": ".post-content, .message-content, article", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "looksmax_org": {
+        "url": "https://looksmax.org/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "looksmax_me": {
+        "url": "https://looksmax.me/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, .thread-title"},
+        "rate_limit": 2,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "forum_looksmaxxing": {
+        "url": "https://forum.looksmaxxing.com/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "lookism": {
+        "url": "https://lookism.net/",
+        "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "bookism": {
+        "url": "https://bookism.net/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "lookstheory": {
+        "url": "https://lookstheory.net/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "geomax": {
+        "url": "https://geomax.me/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "chuds_life": {
+        "url": "https://chuds.life/",
+        "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "blackpill",
+        "deep_crawl": True
+    },
+    "elysianfields": {
+        "url": "https://elysianfields.se/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "blackpill",
+        "deep_crawl": True
+    },
+    "neets": {
+        "url": "https://neets.net/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "blackpill",
+        "deep_crawl": True
+    },
+    "blackpill_club": {
+        "url": "https://blackpill.club/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, .thread-title"},
+        "rate_limit": 2,
+        "category": "blackpill",
+        "deep_crawl": True
+    },
+    "incels_in": {
+        "url": "https://incels.in/",
+        "selectors": {"content": ".post-content, .message-content, article", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "blackpill",
+        "deep_crawl": True,
+        "last_resort_only": True
+    },
+    "lpsg": {
+        "url": "https://www.lpsg.com/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "lpsg_forums": {
+        "url": "https://www.lpsg.com/forums/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    
+    # Blackpill
     "theredarchive": {
         "url": "https://theredarchive.com/",
         "selectors": {"content": "article, .entry-content, div.post-content", "title": "h1, .entry-title"},
@@ -139,20 +288,6 @@ WEBSITE_SOURCES = {
         "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
         "rate_limit": 2,
         "category": "blackpill",
-        "deep_crawl": True
-    },
-    "looksmax_gg": {
-        "url": "https://looksmax.gg/",
-        "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, .post-title, .thread-title"},
-        "rate_limit": 2,
-        "category": "looksmaxxing",
-        "deep_crawl": True
-    },
-    "looksmax_org": {
-        "url": "https://looksmax.org/",
-        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
-        "rate_limit": 2,
-        "category": "looksmaxxing",
         "deep_crawl": True
     },
     "masculineprinciple": {
@@ -177,6 +312,8 @@ WEBSITE_SOURCES = {
         "category": "blackpill",
         "deep_crawl": True
     },
+    
+    # Bimbofication
     "bimbolover": {
         "url": "https://bimbolover.com/",
         "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
@@ -185,14 +322,33 @@ WEBSITE_SOURCES = {
         "deep_crawl": True,
         "extract_images": True
     },
-    "forum_looksmaxxing": {
-        "url": "https://forum.looksmaxxing.com/",
-        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
-        "exclude": ["/member/", "/search/", "/help/"],
+    
+    # Adult Industry
+    "avn": {
+        "url": "https://www.avn.com/",
+        "selectors": {"content": "article, .content, .post-content", "title": "h1, .title"},
         "rate_limit": 3,
-        "category": "looksmaxxing",
+        "category": "adult_industry",
         "deep_crawl": True
     },
+    
+    # Pharmacology
+    "examine": {
+        "url": "https://examine.com/",
+        "selectors": {"content": ".article-content, .content", "title": "h1"},
+        "rate_limit": 3,
+        "category": "pharmacology",
+        "deep_crawl": True
+    },
+    "erowid": {
+        "url": "https://erowid.org/",
+        "selectors": {"content": "#maincontent, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "pharmacology",
+        "deep_crawl": True
+    },
+    
+    # Research
     "earth_com": {
         "url": "https://www.earth.com/",
         "selectors": {"content": "article, .article-content, .post-content", "title": "h1, .entry-title"},
@@ -220,27 +376,6 @@ WEBSITE_SOURCES = {
         "rate_limit": 2,
         "category": "research",
         "deep_crawl": False
-    },
-    "examine": {
-        "url": "https://examine.com/",
-        "selectors": {"content": ".article-content, .content", "title": "h1"},
-        "rate_limit": 3,
-        "category": "pharmacology",
-        "deep_crawl": True
-    },
-    "erowid": {
-        "url": "https://erowid.org/",
-        "selectors": {"content": "#maincontent, .content", "title": "h1, h2"},
-        "rate_limit": 2,
-        "category": "pharmacology",
-        "deep_crawl": True
-    },
-    "avn": {
-        "url": "https://www.avn.com/",
-        "selectors": {"content": "article, .content, .post-content", "title": "h1, .title"},
-        "rate_limit": 3,
-        "category": "adult_industry",
-        "deep_crawl": True
     }
 }
 
@@ -261,6 +396,15 @@ LAST_RESORT_SOURCES = {
         "category": "blackpill",
         "deep_crawl": True,
         "last_resort_only": True
+    },
+    "incels_in": {
+        "url": "https://incels.in/",
+        "selectors": {"content": ".post-content, .message-content, article", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "blackpill",
+        "deep_crawl": True,
+        "last_resort_only": True
     }
 }
 
@@ -276,8 +420,21 @@ MULTIREDDIT_SOURCES = [
     "freePE", "gettingbigger", "ketorecipes", "ketoscience", "leangains",
     "longevity", "moreplatesmoredates", "nbe", "neuroscience", "nutrition",
     "orthotropics", "rawprimal", "sleep", "steroids", "tall", "tretinoin",
-    "weightroom"
+    "weightroom",
+    "CarnivoreRecipes", "Howtolooksmax", "lookyourbest", "PlasticSurgery",
+    "cosmeticsurgery", "Hairloss", "tressless", "MaleFashionAdvice",
+    "shortguys", "foreveralone", "carnivore", "AnimalBased", "RayPeat",
+    "StopEatingSeedOils", "bimbofication", "BimboficationJourney", "1000ccplus"
 ]
+
+# Bimbofication Document Source
+BIMBOFICATION_DOCUMENT = {
+    "pdf_url": "https://github.com/AmazighOasisAzul/Alternative-lifestyle-AI/raw/main/docs/The_Big_Pink_Book.pdf",
+    "markdown_url": "https://github.com/AmazighOasisAzul/Alternative-lifestyle-AI/raw/main/docs/The_Big_Pink_Book.md",
+    "category": "bimbofication",
+    "type": "guide",
+    "title": "The Big Pink Book: A Beginner's Guide To Bimbofication"
+}
 
 # Reddit OAuth2 Configuration
 REDDIT_CONFIG = {
