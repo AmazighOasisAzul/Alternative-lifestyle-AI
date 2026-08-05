@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Cache HuggingFace / embedding models
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/huggingface
+            ~/.cache/torch
+          key: ${{ runner.os }}-hf-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-hf-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8 ruff
+
+      - name: Lint (ruff + flake8 critical errors)
+        run: |
+          ruff check . --select E,F,W --ignore E501
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Config & structure validation
+        run: |
+          python -c "
+          import os, sys
+          required = [
+              'cli.py', 'config.py', 'crawler.py', 'retriever.py',
+              'generator.py', 'indexer.py', 'api.py', 'web_interface.py',
+              'requirements.txt', 'README.md'
+          ]
+          missing = [f for f in required if not os.path.exists(f)]
+          if missing:
+              print('Missing files:', missing)
+              sys.exit(1)
+          from config import SOURCES, VECTOR_DB_PATH, CHUNK_SIZE
+          assert isinstance(SOURCES, dict) and len(SOURCES) > 0, 'SOURCES empty'
+          print('Structure + config OK')
+          "
+
+      - name: Dry-run smoke tests (no model download, no crawl)
+        run: |
+          python -c "
+          from retriever import DualModeRetriever
+          from generator import BlackpillGenerator
+          r = DualModeRetriever()
+          g = BlackpillGenerator()
+          answer = g.generate('test query', [], mode='fast', max_tokens=32)
+          print('Smoke test passed')
+          print(answer[:200] if answer else 'empty answer (ok)')
+          "
