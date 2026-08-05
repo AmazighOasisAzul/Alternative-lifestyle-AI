@@ -128,7 +128,6 @@ Answer:"""
 {content}
 
 ")
-")
         
         return "\n".join(parts)
     
