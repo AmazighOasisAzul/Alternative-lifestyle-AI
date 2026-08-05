@@ -101,6 +101,12 @@ python crawler.py --max-pages 200
 
 # Index the crawled data
 python indexer.py
+
+# Fetch PubMed papers
+python pubmed_connector.py --query "testosterone" --max 10
+
+# Parse Erowid substance
+python erowid_parser.py --substance mdma
 ```
 
 ## Data Sources
@@ -141,6 +147,7 @@ Alternative-lifestyle-AI/
 ├── START_HERE.md                # Setup guide
 ├── LICENSE                      # MIT License
 ├── .gitignore
+├── .pre-commit-config.yaml      # Pre-commit hooks
 ├── requirements.txt
 ├── config.py                    # All data source configurations
 ├── crawler.py                   # Multi-source web crawler
@@ -154,13 +161,15 @@ Alternative-lifestyle-AI/
 ├── web_interface.py             # Streamlit web interface
 ├── cli.py                       # Terminal AI interface
 ├── indexer.py                   # Data indexer
+├── pubmed_connector.py           # PubMed connector
+├── erowid_parser.py             # Erowid parser
 ├── Dockerfile
 ├── docker-compose.yml
 ├── install_and_run.bat          # Windows install/run
 ├── install_and_run.sh           # Mac install/run
 ├── .github/
 │   └── workflows/
-│       └── ci.yml               # GitHub Actions
+│       └── ci.yml               # GitHub Actions CI
 └── data/                        # Local data storage (gitignored)
     ├── vector_db/
     ├── images/
