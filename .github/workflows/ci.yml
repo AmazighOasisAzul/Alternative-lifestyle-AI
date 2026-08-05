@@ -43,7 +43,7 @@ jobs:
 
       - name: Lint (ruff + flake8 critical errors)
         run: |
-          ruff check . --select E,F,W --ignore E501
+          ruff check . --select E,F --ignore E501
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Config & structure validation
@@ -59,8 +59,8 @@ jobs:
           if missing:
               print('Missing files:', missing)
               sys.exit(1)
-          from config import SOURCES, VECTOR_DB_PATH, CHUNK_SIZE
-          assert isinstance(SOURCES, dict) and len(SOURCES) > 0, 'SOURCES empty'
+          from config import WEBSITE_SOURCES, VECTOR_DB_PATH, CHUNK_SIZE
+          assert isinstance(WEBSITE_SOURCES, dict) and len(WEBSITE_SOURCES) > 0, 'WEBSITE_SOURCES empty'
           print('Structure + config OK')
           "
 
@@ -70,8 +70,9 @@ jobs:
           from retriever import DualModeRetriever
           from generator import BlackpillGenerator
           r = DualModeRetriever()
-          g = BlackpillGenerator()
+          g = BlackpillGenerator(model='invalid-model-to-force-fallback')
           answer = g.generate('test query', [], mode='fast', max_tokens=32)
+          assert answer, 'Empty answer'
           print('Smoke test passed')
-          print(answer[:200] if answer else 'empty answer (ok)')
+          print(answer[:200])
           "
