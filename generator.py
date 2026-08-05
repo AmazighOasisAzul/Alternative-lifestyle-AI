@@ -114,7 +114,8 @@ ugh" not in answer.lower():
             source = metadata.get('source', 'Unknown')
             title = metadata.get('title', 'No title')
             date = metadata.get('date', '')
-            content_text = item.get('content', '')[:1000]
+            content = item.get('content', '')[:1000]
+            score = item.get('score', 0)
             
             category_label = {
                 'diet': '[DIET]', 'looksmaxxing': '[LOOKSMAXXING]', 
@@ -125,12 +126,12 @@ ugh" not in answer.lower():
             }.get(category, '[GENERAL]')
             
             date_str = f" ({date})" if date else ""
-            parts.append(f"{category_label} Source {i} - {source}: {title}{date_str}
-{content_text}
-
+            parts.append(f"{category_label} Source {i+1} - {source}: {title}{date_str}\n{content}\n\n")
 ")
         
-        return "\n".join(parts)    def generate_structured(self, query: str, context: List[Dict], mode: str = "fast",
+        return "\n".join(parts)
+    
+    def generate_structured(self, query: str, context: List[Dict], mode: str = "fast",
                            max_tokens: int = 1024, use_last_resort: bool = False) -> Dict:
         """Generate structured response with grounding metadata."""
         context_text = self.format_context(context)
