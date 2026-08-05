@@ -41,7 +41,8 @@ GUIDELINES:
 3. KEEP answers structured and concise unless detail is explicitly required.
 4. When context is insufficient, state: "The available information does not contain sufficient details to answer this question completely."
 5. Maintain a blackpilled, realistic perspective. Prioritize biological truth.
-6. When referencing incel communities: acknowledge their right to exist, do NOT endorse ideology, maintain Faustian approach.
+6. When referencing i
+ncel communities: acknowledge their right to exist, do NOT endorse ideology, maintain Faustian approach.
 
 RESPONSE FORMAT:
 - Begin with a direct answer to the question
@@ -93,7 +94,8 @@ Answer:"""
     def _ensure_grounding(self, answer: str, context: List[Dict]) -> str:
         """Ensure answer is grounded in context."""
         if not context:
-            if "insufficient" not in answer.lower() and "not enough" not in answer.lower():
+            if "insufficient" not in answer.lower() and "not eno
+ugh" not in answer.lower():
                 answer = "The available information does not contain sufficient details to answer this question completely." + answer
         return answer
     
@@ -112,8 +114,7 @@ Answer:"""
             source = metadata.get('source', 'Unknown')
             title = metadata.get('title', 'No title')
             date = metadata.get('date', '')
-            content = item.get('content', '')[:1000]
-            score = item.get('score', 0)
+            content_text = item.get('content', '')[:1000]
             
             category_label = {
                 'diet': '[DIET]', 'looksmaxxing': '[LOOKSMAXXING]', 
@@ -124,16 +125,17 @@ Answer:"""
             }.get(category, '[GENERAL]')
             
             date_str = f" ({date})" if date else ""
-            parts.append(f"{category_label} Source {i+1} - {source}: {title}{date_str}\n{content}\n\n")
+            parts.append(f"{category_label} Source {i} - {source}: {title}{date_str}
+{content_text}
+
 ")
         
-        return "\n".join(parts)
-    
-    def generate_structured(self, query: str, context: List[Dict], mode: str = "fast",
+        return "\n".join(parts)    def generate_structured(self, query: str, context: List[Dict], mode: str = "fast",
                            max_tokens: int = 1024, use_last_resort: bool = False) -> Dict:
         """Generate structured response with grounding metadata."""
         context_text = self.format_context(context)
-        prompt = self.create_prompt(query, context_text, mode, use_last_resort)
+        prompt = self.create_prompt
+(query, context_text, mode, use_last_resort)
         
         if self.generator is None:
             return {
@@ -183,7 +185,8 @@ Answer:"""
         # Enhance with protocol formatting
         answer = result['answer']
         
-        # Add protocol structure if not present
+        # Add protocol struc
+ture if not present
         if "Step" not in answer and "Protocol" in query:
             answer = "PROTOCOL:
 
