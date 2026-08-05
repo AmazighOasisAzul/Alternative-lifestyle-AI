@@ -3,8 +3,28 @@ TERRAIN_THEORY_PRIORITY = True
 PASTEUR_QUOTE = "Bernard was right. The microbe is nothing, the terrain is everything."
 PASTEUR_QUOTE_FRENCH = "Bernard avait raison. Le germe n'est rien, c'est le terrain qui est tout."
 
-# ALL SOURCES - Comprehensive alternative knowledge
-SOURCES = {
+# RAG CONFIGURATION
+HYBRID_SEARCH_ENABLED = True
+RECENCY_WEIGHTING_ENABLED = True
+METADATA_FILTERS_ENABLED = True
+
+# CRAWLING CONFIGURATION
+CRAWL_CONFIG = {
+    "default_max_pages": 500,
+    "deep_crawl": True,
+    "follow_sitemap": True,
+    "follow_links": True,
+    "content_hashing": True,
+    "anti_block": {
+        "user_agent_rotation": True,
+        "jittered_delays": True,
+        "min_delay": 1.0,
+        "max_delay": 3.0
+    }
+}
+
+# WEBSITE SOURCES
+WEBSITE_SOURCES = {
     "aajonus": {
         "url": "https://aajonus.net/",
         "sitemap": "https://aajonus.net/sitemap.xml",
@@ -221,14 +241,17 @@ SOURCES = {
         "rate_limit": 3,
         "category": "adult_industry",
         "deep_crawl": True
-    },
+    }
+}
+
+# Last Resort Sources
+LAST_RESORT_SOURCES = {
     "incels_is": {
         "url": "https://incels.is/forums/must-read-content.23/",
         "selectors": {"content": ".post-content, .message-content, article", "title": "h1, h2, .thread-title"},
         "rate_limit": 3,
         "category": "blackpill",
         "deep_crawl": True,
-        "priority": "last_resort",
         "last_resort_only": True
     },
     "schaduw": {
@@ -237,78 +260,75 @@ SOURCES = {
         "rate_limit": 3,
         "category": "blackpill",
         "deep_crawl": True,
-        "priority": "last_resort",
         "last_resort_only": True
     }
 }
 
-SOCIAL_MEDIA_SOURCES = {
-    "instagram": {
-        "accounts": ["bimbofication", "looksmaxxing", "mewing", "orthotropics", "primal_diet", "carnivore_diet"],
-        "category": "bimbofication",
-        "extract_images": True,
-        "extract_videos": True
+# User's Curated Multireddit
+MULTIREDDIT_PATH = "user/kooky_computer1163/m/pe"
+MULTIREDDIT_SOURCES = [
+    "BecomingTheIceman", "Biohackers", "BiohackingU", "BlackPillScience",
+    "BlackpilledReality", "BlackpilledTeens", "BodyHackGuide", "Brogress",
+    "Fitness", "GettingShredded", "Hink", "Invisalign", "LooksmaxingAdvice",
+    "MakeupAddiction", "Microbiome", "Penis_Enlargement_Pro", "PeptidePathways",
+    "Peptidesource", "Posture", "PurplePillDebate", "SkincareAddicts",
+    "Supplements", "TMJ", "Testosterone", "TheScienceOfPE", "cumbiggerloads",
+    "freePE", "gettingbigger", "ketorecipes", "ketoscience", "leangains",
+    "longevity", "moreplatesmoredates", "nbe", "neuroscience", "nutrition",
+    "orthotropics", "rawprimal", "sleep", "steroids", "tall", "tretinoin",
+    "weightroom"
+]
+
+# Reddit OAuth2 Configuration
+REDDIT_CONFIG = {
+    "client_id": "YOUR_REDDIT_CLIENT_ID",
+    "client_secret": "YOUR_REDDIT_CLIENT_SECRET",
+    "user_agent": "AlternativeLifestyleAI/1.0",
+    "use_praw": True,
+    "rate_limit": 1.0,
+    "jitter": True,
+    "max_retries": 3
+}
+
+# Reddit Historical Data Sources
+REDDIT_HISTORICAL_SOURCES = {
+    "arctic_shift": {"enabled": False, "api_url": "https://api.arcticshift.org", "requires_auth": True},
+    "pullpush": {"enabled": False, "api_url": "https://api.pullpush.io", "note": "Unreliable"},
+    "academic_torrents": {"enabled": False, "url": "https://academictorrents.com/collection/reddit"}
+}
+
+# Scientific Connectors
+SCIENTIFIC_CONNECTORS = {
+    "pubmed": {
+        "enabled": True,
+        "email": "your-email@domain.com",
+        "max_results": 10,
+        "search_fields": ["diet", "nutrition", "endocrinology", "dermatology", "orthodontics", "sleep", "peptides", "steroids", "microbiome"],
+        "store_metadata": True
     },
-    "twitter": {
-        "accounts": ["BlackPillScience", "LooksMaxxing", "MewingScience", "PrimalDiet", "CarnivoreDiet"],
-        "category": "blackpill",
-        "extract_images": True,
-        "extract_videos": True
-    }
+    "semantic_scholar": {"enabled": False, "api_key": "YOUR_API_KEY", "max_results": 10},
+    "europe_pmc": {"enabled": False, "api_url": "https://www.ebi.ac.uk/europepmc/webservices/rest", "max_results": 10}
 }
 
-SCRIBD_DOCUMENTS = [
-    {"url": "https://www.scribd.com/document/.../The-Art-of-Frame", "title": "The Art of Frame", "category": "blackpill"},
-    {"url": "https://www.scribd.com/document/.../Bonesmashing-Guide", "title": "Bonesmashing Guide", "category": "looksmaxxing"}
-]
-
-REDDIT_SOURCES = {
-    "bimbofication": {"subreddit": "BimboficationJourney", "category": "looksmaxxing", "limit": 1000},
-    "looksmaxxing": {"subreddit": "looksmaxxing", "category": "looksmaxxing", "limit": 1000},
-    "incels": {"subreddit": "incels", "category": "blackpill", "limit": 1000},
-    "blackpillscience": {"subreddit": "BlackPillScience", "category": "blackpill", "limit": 1000}
-}
-
-ADDITIONAL_REDDIT_SOURCES = {
-    "redpill": {"subreddit": "TheRedPill", "category": "blackpill", "limit": 1000},
-    "blackpill": {"subreddit": "BlackPill", "category": "blackpill", "limit": 1000},
-    "looksmax": {"subreddit": "looksmax", "category": "looksmaxxing", "limit": 1000},
-    "mewing": {"subreddit": "mewing", "category": "looksmaxxing", "limit": 1000},
-    "orthotropics": {"subreddit": "orthotropics", "category": "looksmaxxing", "limit": 1000},
-    "incel": {"subreddit": "incel", "category": "blackpill", "limit": 1000},
-    "mgtow": {"subreddit": "MGTOW", "category": "blackpill", "limit": 1000},
-    "mgtow2": {"subreddit": "MGTOW2", "category": "blackpill", "limit": 1000},
-    "femaleleveluprstrategy": {"subreddit": "FemaleLevelUpStrategy", "category": "blackpill", "limit": 1000},
-    "femaledatingstrategy": {"subreddit": "FemaleDatingStrategy", "category": "blackpill", "limit": 1000},
-    "asktrp": {"subreddit": "askTRP", "category": "blackpill", "limit": 1000},
-    "marriagedredd": {"subreddit": "MarriageDredd", "category": "blackpill", "limit": 1000},
-    "deadbedrooms": {"subreddit": "DeadBedrooms", "category": "blackpill", "limit": 1000},
-    "whereareallthegoodmen": {"subreddit": "whereareallthegoodmen", "category": "blackpill", "limit": 1000},
-    "pussypassdenied": {"subreddit": "PussyPassDenied", "category": "blackpill", "limit": 1000},
-    "twoxchromosomes": {"subreddit": "TwoXChromosomes", "category": "blackpill", "limit": 1000},
-    "thebluepill": {"subreddit": "TheBluePill", "category": "blackpill", "limit": 1000},
-    "braincels": {"subreddit": "Braincels", "category": "blackpill", "limit": 1000},
-    "inceltears": {"subreddit": "IncelTears", "category": "blackpill", "limit": 1000},
-    "trufemcels": {"subreddit": "TruFemcels", "category": "blackpill", "limit": 1000},
-    "femcels": {"subreddit": "Femcels", "category": "blackpill", "limit": 1000}
-}
-
+# Wikipedia Pages
 WIKI_PAGES = [
-    "AVN_Awards", "Pornographic_film_actor", "Adult_film_database", "Incels",
-    "Involuntary_celibacy", "Looksmaxxing", "Orthotropics", "Mewing", "Eliot_Rodger",
-    "Manosphere", "Nootropics", "Anabolic_steroid", "Testosterone",
-    "Human_growth_hormone", "Propecia", "Minoxidil"
+    "AVN_Awards", "Pornographic_film_actor", "Adult_film_database",
+    "Incels", "Involuntary_celibacy", "Looksmaxxing", "Orthotropics",
+    "Mewing", "Eliot_Rodger", "Manosphere", "Nootropics",
+    "Anabolic_steroid", "Testosterone", "Human_growth_hormone",
+    "Propecia", "Minoxidil"
 ]
 
+# Web Search Configuration
 WEB_SEARCH_CONFIG = {
-    "pubmed_email": "your-email@domain.com",
-    "max_results": 8,
     "user_agent": "AlternativeLifestyleAI/1.0",
     "rate_limit": 1.0,
+    "jitter": True,
     "fetch_content": True,
     "max_content_length": 15000
 }
 
+# Image Storage Configuration
 IMAGE_CONFIG = {
     "storage_path": "./images",
     "thumbnail_size": [300, 300],
@@ -319,6 +339,7 @@ IMAGE_CONFIG = {
     "create_thumbnails": True
 }
 
+# Visual Knowledge Base Configuration
 VISUAL_KB_CONFIG = {
     "index_path": "./visual_kb",
     "image_embedding_model": "clip-ViT-B-32",
@@ -326,7 +347,26 @@ VISUAL_KB_CONFIG = {
     "store_metadata": True
 }
 
+# Vector Database Configuration
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 VECTOR_DB_PATH = "./vector_db"
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 200
+
+# RAG Configuration
+RAG_CONFIG = {
+    "hybrid_search": True,
+    "recency_weighting": True,
+    "metadata_filters": ["source", "category", "date", "subreddit"],
+    "k": 8,
+    "score_threshold": 0.5
+}
+
+# Generation Configuration
+GENERATION_CONFIG = {
+    "max_tokens": 1024,
+    "temperature": 0.7,
+    "grounding_required": True,
+    "reference_sources": True,
+    "structured_output": True
+}
