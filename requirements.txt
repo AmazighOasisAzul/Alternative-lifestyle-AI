@@ -29,3 +29,5 @@ praw==7.7.1
 # Development
 black>=24.0.0
 flake8>=6.1.0
+ruff>=0.6.0
+pre-commit>=3.7.0
