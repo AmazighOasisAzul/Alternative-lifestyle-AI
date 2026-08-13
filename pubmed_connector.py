@@ -92,7 +92,7 @@ class PubMedConnector:
         }
         
         try:
-            response = self.session.get(self.ESEARCH_URL, params=params)
+            response = self.session.get(self.ESEARCH_URL, params=params, timeout=10)
             response.raise_for_status()
             data = response.json()
             
@@ -124,7 +124,7 @@ class PubMedConnector:
         }
         
         try:
-            response = self.session.get(self.EFETCH_URL, params=params)
+            response = self.session.get(self.EFETCH_URL, params=params, timeout=10)
             response.raise_for_status()
             
             root = ET.fromstring(response.content)
