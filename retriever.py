@@ -121,10 +121,10 @@ class HybridRetriever:
         try:
             # Try to parse date
             date_obj = datetime.strptime(date_str, '%Y-%m-%d')
-        except:
+        except ValueError:
             try:
                 date_obj = datetime.strptime(date_str, '%B %d, %Y')
-            except:
+            except ValueError:
                 return 0.5
         
         age_days = (datetime.now() - date_obj).days
@@ -152,7 +152,7 @@ class HybridRetriever:
                         filter_date = datetime.strptime(value, '%Y-%m-%d')
                         if doc_date_obj < filter_date:
                             return False
-                    except:
+                    except ValueError:
                         pass
         
         return True
