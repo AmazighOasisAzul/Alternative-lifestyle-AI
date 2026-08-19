@@ -56,7 +56,8 @@ WEBSITE_SOURCES = {
     "raypeat": {
         "url": "https://raypeat.com/",
         "sitemap": None,
-        "selectors": {"content": "body, .article", "title": "h1, title", "date": None},
+        "selectors": {"content": "body, .article"
+, "title": "h1, title", "date": None},
         "exclude": ["/forum/", "/search/"],
         "rate_limit": 3,
         "category": "diet",
@@ -98,7 +99,8 @@ WEBSITE_SOURCES = {
         "deep_crawl": True
     },
     "lowtoxinforum": {
-        "url": "https://lowtoxinforum.com/",
+        "url": "https://lowtoxinforum.
+com/",
         "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, .entry-title, .post-title", "date": ".entry-date"},
         "exclude": ["/tag/", "/category/", "/author/", "/feed/"],
         "rate_limit": 2,
@@ -150,7 +152,8 @@ WEBSITE_SOURCES = {
     "looksmax_gg": {
         "url": "https://looksmax.gg/",
         "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, .post-title, .thread-title"},
-        "rate_limit": 2,
+        "rate_lim
+it": 2,
         "category": "looksmaxxing",
         "deep_crawl": True
     },
@@ -202,7 +205,8 @@ WEBSITE_SOURCES = {
     "lookstheory": {
         "url": "https://lookstheory.net/",
         "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
-        "rate_limit": 2,
+     
+   "rate_limit": 2,
         "category": "looksmaxxing",
         "deep_crawl": True
     },
@@ -258,7 +262,8 @@ WEBSITE_SOURCES = {
         "category": "looksmaxxing",
         "deep_crawl": True
     },
-    "lpsg_forums": {
+    "lp
+sg_forums": {
         "url": "https://www.lpsg.com/forums/",
         "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
         "exclude": ["/member/", "/search/", "/help/"],
@@ -309,7 +314,8 @@ WEBSITE_SOURCES = {
         "url": "https://scientificsean.com/wiki/",
         "selectors": {"content": ".mw-parser-output, article, .content", "title": "h1, .firstHeading"},
         "rate_limit": 2,
-        "category": "blackpill",
+        "catego
+ry": "blackpill",
         "deep_crawl": True
     },
     
@@ -372,12 +378,108 @@ WEBSITE_SOURCES = {
     },
     "rentry_sleepguide": {
         "url": "https://rentry.co/sleepguide/",
-        "selectors": {"content": ".markdown-body, article, .content", "title": "h1, h2"},
+        "selectors": {"content": ".markdown-bod
+y, article, .content", "title": "h1, h2"},
         "rate_limit": 2,
         "category": "research",
         "deep_crawl": False
     }
 }
+    
+    # PE / Growth / Tracking
+    "primewood_shop": {
+        "url": "https://primewood.shop/",
+        "selectors": {"content": "article, .product-content, .post-content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "pharmacology",
+        "deep_crawl": True
+    },
+    "kinstonelabs_shop": {
+        "url": "https://kinstonelabs.shop/",
+        "selectors": {"content": "article, .product-content, .post-content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "pharmacology",
+        "deep_crawl": True
+    },
+    "hink_course": {
+        "url": "https://hink-s-site.thinkific.com/courses/Hink",
+        "selectors": {"content": ".course-content, article, .content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "research",
+        "deep_crawl": True
+    },
+    "pe_growth_track": {
+        "url": "https://pe-growth-track.com/",
+        "selectors": {"content": "article, .content, .post-content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "fitness",
+        "deep_crawl": True
+    },
+    "hink_injuries_guide": {
+        "url": "https://hink-s-site.thinkific.com/courses/Injuriesguide",
+        "selectors": {"content": ".course-content, article, .content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "research",
+        "deep_crawl": True
+    },
+    
+    # Forums / Communities
+    "forummaxxing": {
+        "url": "https://forummaxxing.com/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    "thebiohacker_forums": {
+        "url": "https://thebiohacker.com/forums/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "research",
+        "deep_crawl": True
+    },
+    "thepeptidesforum": {
+        "url": "https://thepeptidesforum.org/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "pharmacology",
+        "deep_crawl": True
+    },
+    "pathtopeptides_feed": {
+        "url": "https://www.pathtopeptides.com/ResearchFeed.html",
+        "selectors": {"content": "article, .content, .post-content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "pharmacology",
+        "deep_crawl": True
+    },
+    "bioenergetic_forum": {
+        "url": "https://bioenergetic.forum/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "diet",
+        "deep_crawl": True
+    },
+    "carnivoretalk": {
+        "url": "https://carnivoretalk.com/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "diet",
+        "deep_crawl": True
+    },
+    "bimbolover_forum": {
+        "url": "https://bimbolover.com/forum/",
+        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "bimbofication",
+        "deep_crawl": True
+    }
+
 
 # Last Resort Sources
 LAST_RESORT_SOURCES = {
@@ -421,7 +523,8 @@ MULTIREDDIT_SOURCES = [
     "longevity", "moreplatesmoredates", "nbe", "neuroscience", "nutrition",
     "orthotropics", "rawprimal", "sleep", "steroids", "tall", "tretinoin",
     "weightroom",
-    "CarnivoreRecipes", "Howtolooksmax", "lookyourbest", "PlasticSurgery",
+    "CarnivoreRecipes", "Howtolooksmax", "
+lookyourbest", "PlasticSurgery",
     "cosmeticsurgery", "Hairloss", "tressless", "MaleFashionAdvice",
     "shortguys", "foreveralone", "carnivore", "AnimalBased", "RayPeat",
     "StopEatingSeedOils", "bimbofication", "BimboficationJourney", "1000ccplus"
@@ -470,7 +573,8 @@ SCIENTIFIC_CONNECTORS = {
 # Wikipedia Pages
 WIKI_PAGES = [
     "AVN_Awards", "Pornographic_film_actor", "Adult_film_database",
-    "Incels", "Involuntary_celibacy", "Looksmaxxing", "Orthotropics",
+    "Incels", "Involunta
+ry_celibacy", "Looksmaxxing", "Orthotropics",
     "Mewing", "Eliot_Rodger", "Manosphere", "Nootropics",
     "Anabolic_steroid", "Testosterone", "Human_growth_hormone",
     "Propecia", "Minoxidil"
