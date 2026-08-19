@@ -27,6 +27,22 @@ class BlackpillGenerator:
             print(f"Warning: Could not load model {model}: {e}")
             self.generator = None
     
+    
+    def serve_bimbofication_guide(self, format_type: str = "markdown") -> str:
+        """Serve The Big Pink Book document based on user request."""
+        from config import BIMBOFICATION_DOCUMENT
+        
+        if format_type == "pdf":
+            url = BIMBOFICATION_DOCUMENT.get("pdf_url", "")
+            if url:
+                return f"The Big Pink Book (PDF): {url}"
+            return "PDF version not available."
+        else:
+            url = BIMBOFICATION_DOCUMENT.get("markdown_url", "")
+            if url:
+                return f"The Big Pink Book (Markdown): {url}"
+            return "Markdown version not available."
+
     def create_prompt(self, query: str, context: str, mode: str = "fast", 
                      use_last_resort: bool = False) -> str:
         """Create optimized prompt with grounding requirements."""
@@ -42,6 +58,7 @@ GUIDELINES:
 4. When context is insufficient, state: "The available information does not contain sufficient details to answer this question completely."
 5. Maintain a blackpilled, realistic perspective. Prioritize biological truth.
 6. When referencing i
+
 ncel communities: acknowledge their right to exist, do NOT endorse ideology, maintain Faustian approach.
 
 RESPONSE FORMAT:
@@ -52,7 +69,7 @@ RESPONSE FORMAT:
 - Reference sources using [Source: category] format"""
 
         if use_last_resort:
-            system_instruction += "\n\nNOTE: This response incorporates last-resort incel forum sources. Present factually with Faustian perspective."
+            system_instruction += "\n\n6. When asked about bimbofication, offer The Big Pink Book guide in PDF or Markdown format.\nNOTE: This response incorporates last-resort incel forum sources. Present factually with Faustian perspective."
         
         if mode == "fast":
             context_instruction = "Based ONLY on the provided context from trusted sources."
@@ -94,7 +111,8 @@ Answer:"""
     def _ensure_grounding(self, answer: str, context: List[Dict]) -> str:
         """Ensure answer is grounded in context."""
         if not context:
-            if "insufficient" not in answer.lower() and "not eno
+            if "insufficient" not in answer.lower() and "not en
+o
 ugh" not in answer.lower():
                 answer = "The available information does not contain sufficient details to answer this question completely." + answer
         return answer
@@ -135,6 +153,7 @@ ugh" not in answer.lower():
         """Generate structured response with grounding metadata."""
         context_text = self.format_context(context)
         prompt = self.create_prompt
+
 (query, context_text, mode, use_last_resort)
         
         if self.generator is None:
@@ -186,6 +205,7 @@ ugh" not in answer.lower():
         answer = result['answer']
         
         # Add protocol struc
+
 ture if not present
         if "Step" not in answer and "Protocol" in query:
             answer = "PROTOCOL:
