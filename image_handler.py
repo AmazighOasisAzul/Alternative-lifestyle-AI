@@ -54,7 +54,11 @@ class ImageHandler:
             with open(image_path, 'wb') as f:
                 f.write(response.content)
             if self.create_thumbnails:
-                self._create_thumbnail(image_path, thumbnail_path)
+                try:
+                    self._create_thumbnail(image_path, thumbnail_path)
+                except Exception:
+                    # Continue even if thumbnail creation fails
+                    pass
             return {
                 'url': image_url,
                 'local_path': str(image_path),
@@ -63,7 +67,9 @@ class ImageHandler:
                 'size': len(response.content),
                 'hash': hashlib.md5(response.content).hexdigest()
             }
-        except Exception as e:
+        except requests.exceptions.RequestException:
+            return None
+        except (OSError, IOError):
             return None
     
     def _create_thumbnail(self, image_path: Path, thumbnail_path: Path):
@@ -71,7 +77,8 @@ class ImageHandler:
             with Image.open(image_path) as img:
                 img.thumbnail(self.thumbnail_size, Image.Resampling.LANCZOS)
                 img.save(thumbnail_path, 'JPEG', quality=85)
-        except Exception:
+        except (OSError, IOError):
+            # Ignore thumbnail creation errors
             pass
     
     def _extract_metadata(self, image_path: Path, image_info: Dict):
@@ -81,7 +88,8 @@ class ImageHandler:
                 image_info['height'] = img.height
                 image_info['format'] = img.format
                 image_info['mode'] = img.mode
-        except Exception:
+        except (OSError, IOError):
+            # Ignore metadata extraction errors
             pass
     
     def get_image_info(self, image_path: Path) -> Optional[Dict]:
@@ -97,7 +105,7 @@ class ImageHandler:
                     'mode': img.mode,
                     'size': image_path.stat().st_size
                 }
-        except Exception:
+        except (OSError, IOError):
             return None
     
     def list_images_by_category(self, category: str = None) -> List[Dict]:

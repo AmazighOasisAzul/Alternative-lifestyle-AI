@@ -92,7 +92,7 @@ class PubMedConnector:
         }
         
         try:
-            response = self.session.get(self.ESEARCH_URL, params=params)
+            response = self.session.get(self.ESEARCH_URL, params=params, timeout=10)
             response.raise_for_status()
             data = response.json()
             
@@ -124,7 +124,7 @@ class PubMedConnector:
         }
         
         try:
-            response = self.session.get(self.EFETCH_URL, params=params)
+            response = self.session.get(self.EFETCH_URL, params=params, timeout=10)
             response.raise_for_status()
             
             root = ET.fromstring(response.content)
@@ -138,25 +138,28 @@ class PubMedConnector:
             title_elem = article.find('.//ArticleTitle')
             title = title_elem.text.strip() if title_elem is not None else "No title"
             
-            # Abstract
-            abstract_elem = article.find('.//AbstractText')
-            abstract = ' '.join([elem.text.strip() for elem in abstract_elem]) if abstract_elem is not None else None
-            
+            # Abstract: collect all AbstractText elements if present
+            abstract_elems = article.findall('.//AbstractText')
+            if abstract_elems:
+                abstract = ' '.join([elem.text.strip() for elem in abstract_elems if elem.text])
+            else:
+                abstract = None
+
             # PMID
             pmid_elem = article.find('.//PMID')
-            pmid = pmid_elem.text.strip() if pmid_elem is not None else pmid
-            
+            pmid = pmid_elem.text.strip() if pmid_elem is not None and pmid_elem.text else pmid
+
             # DOI
             doi_elem = article.find('.//ELocationID[@EIdType="doi"]')
-            doi = doi_elem.text.strip() if doi_elem is not None else None
-            
+            doi = doi_elem.text.strip() if doi_elem is not None and doi_elem.text else None
+
             # Year
             year_elem = article.find('.//PubDate/Year')
-            year = year_elem.text.strip() if year_elem is not None else None
-            
-            # Journal
-            journal_elem = article.find('.//Title[parent::Journal]')
-            journal = journal_elem.text.strip() if journal_elem is not None else None
+            year = year_elem.text.strip() if year_elem is not None and year_elem.text else None
+
+            # Journal: prefer Journal/Title
+            journal_elem = article.find('.//Journal/Title')
+            journal = journal_elem.text.strip() if journal_elem is not None and journal_elem.text else None
             
             # Authors
             authors = []

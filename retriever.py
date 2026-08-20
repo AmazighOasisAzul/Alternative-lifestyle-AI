@@ -121,10 +121,10 @@ class HybridRetriever:
         try:
             # Try to parse date
             date_obj = datetime.strptime(date_str, '%Y-%m-%d')
-        except:
+        except ValueError:
             try:
                 date_obj = datetime.strptime(date_str, '%B %d, %Y')
-            except:
+            except ValueError:
                 return 0.5
         
         age_days = (datetime.now() - date_obj).days
@@ -152,7 +152,7 @@ class HybridRetriever:
                         filter_date = datetime.strptime(value, '%Y-%m-%d')
                         if doc_date_obj < filter_date:
                             return False
-                    except:
+                    except ValueError:
                         pass
         
         return True
@@ -178,28 +178,25 @@ class HybridRetriever:
         # Combine scores
         combined_results = []
         for i, (doc, dense_score) in enumerate(dense_results):
-            if i >= len(bm25_scores):
-                break
-            
             metadata = doc.metadata if hasattr(doc, 'metadata') else {}
-            
+
             # Apply filters
             if not self._apply_metadata_filter(metadata, filters):
                 continue
-            
+
             # Skip last resort if not requested
             if not use_last_resort and metadata.get('is_last_resort', False):
                 continue
-            
-            # Calculate combined score
-            bm25_score = bm25_scores[i]
+
+            # Safely get BM25 score if available
+            bm25_score = bm25_scores[i] if i < len(bm25_scores) else 0.0
             recency_score = self._calculate_recency_score(metadata)
-            
+
             # Hybrid score: dense + BM25 + recency
             hybrid_score = (dense_score * 0.7 + 
                           bm25_score * 0.2 + 
                           recency_score * self.recency_weight)
-            
+
             combined_results.append((doc, hybrid_score, metadata))
         
         # Sort by combined score

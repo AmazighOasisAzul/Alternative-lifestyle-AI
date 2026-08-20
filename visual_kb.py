@@ -22,17 +22,19 @@ class VisualKnowledgeBase:
     def _load_index(self) -> Dict:
         if self.image_index_file.exists():
             try:
-                with open(self.image_index_file, 'r') as f:
+                with open(self.image_index_file, 'r', encoding='utf-8') as f:
                     return json.load(f)
-            except Exception:
-                pass
+            except (json.JSONDecodeError, OSError):
+                # Corrupt or unreadable index - start fresh
+                return {'images': [], 'categories': {}, 'sources': {}}
         return {'images': [], 'categories': {}, 'sources': {}}
     
     def _save_index(self):
         try:
-            with open(self.image_index_file, 'w') as f:
+            with open(self.image_index_file, 'w', encoding='utf-8') as f:
                 json.dump(self.image_index, f, indent=2)
-        except Exception:
+        except OSError:
+            # Could not write index; ignore but don't crash
             pass
     
     def add_image(self, image_info: Dict) -> str:
