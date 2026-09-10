@@ -57,6 +57,7 @@ WEBSITE_SOURCES = {
         "url": "https://raypeat.com/",
         "sitemap": None,
         "selectors": {"content": "body, .article"
+
 , "title": "h1, title", "date": None},
         "exclude": ["/forum/", "/search/"],
         "rate_limit": 3,
@@ -99,7 +100,8 @@ WEBSITE_SOURCES = {
         "deep_crawl": True
     },
     "lowtoxinforum": {
-        "url": "https://lowtoxinforum.
+        "url": "https://lowtoxinforum
+.
 com/",
         "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, .entry-title, .post-title", "date": ".entry-date"},
         "exclude": ["/tag/", "/category/", "/author/", "/feed/"],
@@ -152,7 +154,8 @@ com/",
     "looksmax_gg": {
         "url": "https://looksmax.gg/",
         "selectors": {"content": "article, .post-content, .content, .main", "title": "h1, .post-title, .thread-title"},
-        "rate_lim
+        "rate_l
+im
 it": 2,
         "category": "looksmaxxing",
         "deep_crawl": True
@@ -205,7 +208,8 @@ it": 2,
     "lookstheory": {
         "url": "https://lookstheory.net/",
         "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
-     
+  
+   
    "rate_limit": 2,
         "category": "looksmaxxing",
         "deep_crawl": True
@@ -262,7 +266,8 @@ it": 2,
         "category": "looksmaxxing",
         "deep_crawl": True
     },
-    "lp
+   
+ "lp
 sg_forums": {
         "url": "https://www.lpsg.com/forums/",
         "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
@@ -314,7 +319,8 @@ sg_forums": {
         "url": "https://scientificsean.com/wiki/",
         "selectors": {"content": ".mw-parser-output, article, .content", "title": "h1, .firstHeading"},
         "rate_limit": 2,
-        "catego
+        "c
+atego
 ry": "blackpill",
         "deep_crawl": True
     },
@@ -378,11 +384,204 @@ ry": "blackpill",
     },
     "rentry_sleepguide": {
         "url": "https://rentry.co/sleepguide/",
-        "selectors": {"content": ".markdown-bod
+        "selectors": {"content": ".markdo
+wn-bod
 y, article, .content", "title": "h1, h2"},
         "rate_limit": 2,
         "category": "research",
         "deep_crawl": False
+
+    # New Fitness Sources
+    "bonytobeastly": {
+        "url": "https://bonytobeastly.com/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "fitness",
+        "deep_crawl": True
+    },
+    "bonytobeastly_recipes": {
+        "url": "https://bonytobeastly.com/recipes-ebook/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "fitness",
+        "deep_crawl": True
+    },
+    
+    # New Looksmaxxing Sources
+    "nerofacerate": {
+        "url": "https://nerofacerate.com/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2, h3"},
+        "rate_limit": 2,
+        "category": "looksmaxxing",
+        "deep_crawl": True
+    },
+    
+    # New Peptides Sources
+    "pathtopeptides": {
+        "url": "https://www.pathtopeptides.com/",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "peptides",
+        "deep_crawl": True
+    },
+    "pathtopeptides_advisor": {
+        "url": "https://www.pathtopeptides.com/PeptideAdvisor.html",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "peptides",
+        "deep_crawl": True
+    },
+    
+    # New Last Resort Sources
+    "zerocontradictions": {
+        "url": "https://zerocontradictions.net/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 3,
+        "category": "last_resort",
+        "deep_crawl": True
+    },
+    "zerocontradictions_organ": {
+        "url": "https://zerocontradictions.net/faqs/race#organ-transplants",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "last_resort",
+        "deep_crawl": True
+    },
+    
+    # New Diet Sources
+    "recipeats": {
+        "url": "https://recipeats.org/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "diet",
+        "deep_crawl": True
+    },
+    "recipeats_start": {
+        "url": "https://recipeats.org/start/",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "diet",
+        "deep_crawl": True
+    },
+    "recipeats_tags": {
+        "url": "https://recipeats.org/tags/",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "diet",
+        "deep_crawl": True
+    },
+    
+    # New PE Sources
+    "malehanger": {
+        "url": "https://www.malehanger.com/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "pe",
+        "deep_crawl": True
+    },
+    "peyronies_traction_reddit": {
+        "url": "https://www.reddit.com/r/PeyroniesSupport/comments/132libt/traction_experience/",
+        "selectors": {"content": ".post-content, .message-content", "title": "h1, .thread-title"},
+        "rate_limit": 3,
+        "category": "pe",
+        "deep_crawl": False
+    },
+    "healthline_penis_weights": {
+        "url": "https://www.healthline.com/health/penis-weights#effect-on-size",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "pe",
+        "deep_crawl": False
+    },
+    "penisstats": {
+        "url": "https://penisstats.com/",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "pe",
+        "deep_crawl": True
+    },
+    "penisstats_blog": {
+        "url": "https://penisstats.com/blog/penis-enlargement-truth",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "pe",
+        "deep_crawl": True
+    },
+    "solution_urologie_pumps": {
+        "url": "https://www.solution-urologie.fr/en/categorie-produit/mens-intimate-health/erection-pumps/",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "pe",
+        "deep_crawl": True
+    },
+    
+    # Additional Fitness Sources
+    "advancedfitness_squats_t": {
+        "url": "https://www.reddit.com/r/AdvancedFitness/comments/6p5wc3/claims_that_squatsleg_work_increases_testosterone/",
+        "selectors": {"content": ".post-content, .message-content", "title": "h1, .thread-title"},
+        "rate_limit": 3,
+        "category": "fitness",
+        "deep_crawl": False
+    },
+    "zenhanger_workout_size": {
+        "url": "https://zenhanger.com/blogs/penis-enlargement/does-working-out-make-your-penis-bigger",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "pe",
+        "deep_crawl": True
+    },
+    
+    # New Research Sources
+    "gokanjo_pressure_points": {
+        "url": "https://gokanjo.com/blogs/your-life-relieved/pressure-points-for-female-arousal",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "research",
+        "deep_crawl": True
+    },
+    
+    # Additional Fitness Sources
+    "benwinney": {
+        "url": "https://benwinney.com/",
+        "selectors": {"content": "article, .post-content, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "fitness",
+        "deep_crawl": True
+    },
+    "benwinney_myokine": {
+        "url": "https://benwinney.com/pages/myokine-cheat-sheet",
+        "selectors": {"content": "article, .content", "title": "h1, h2"},
+        "rate_limit": 2,
+        "category": "fitness",
+        "deep_crawl": True
+    },
+    
+    # New Pharmacology Sources
+    "nootopics_map": {
+        "url": "https://www.reddit.com/r/NooTopics/comments/1w8orli/nootropics_map/",
+        "selectors": {"content": ".post-content, .message-content", "title": "h1, .thread-title"},
+        "rate_limit": 3,
+        "category": "pharmacology",
+        "deep_crawl": False
+    },
+    
+    # New Breast Enhancement Sources
+    "breastnexus": {
+        "url": "https://breastnexus.com/forumdisplay.php?fid=2",
+        "selectors": {"content": ".post-content, .thread-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "breast_enhancement",
+        "deep_crawl": True
+    },
+    "breastpillsvote": {
+        "url": "https://forum.breastpillsvote.com/",
+        "selectors": {"content": ".post-content, .thread-content", "title": "h1, h2, .thread-title"},
+        "exclude": ["/member/", "/search/", "/help/"],
+        "rate_limit": 3,
+        "category": "breast_enhancement",
+        "deep_crawl": True
+    }
     }
 }
     
@@ -434,7 +633,8 @@ y, article, .content", "title": "h1, h2"},
     },
     "thebiohacker_forums": {
         "url": "https://thebiohacker.com/forums/",
-        "selectors": {"content": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
+        "selectors": {"conten
+t": ".post-content, .thread-content, .message-content", "title": "h1, h2, .thread-title"},
         "exclude": ["/member/", "/search/", "/help/"],
         "rate_limit": 3,
         "category": "research",
@@ -484,7 +684,8 @@ y, article, .content", "title": "h1, h2"},
 # Last Resort Sources
 LAST_RESORT_SOURCES = {
     "incels_is": {
-        "url": "https://incels.is/forums/must-read-content.23/",
+        "url": "https://incels.is/forums/must-read-content
+.23/",
         "selectors": {"content": ".post-content, .message-content, article", "title": "h1, h2, .thread-title"},
         "rate_limit": 3,
         "category": "blackpill",
@@ -530,7 +731,8 @@ lookyourbest", "PlasticSurgery",
     "StopEatingSeedOils", "bimbofication", "BimboficationJourney", "1000ccplus"
 ]
 
-# Bimbofication Document Source
+# 
+Bimbofication Document Source
 BIMBOFICATION_DOCUMENT = {
     "pdf_url": "https://github.com/AmazighOasisAzul/Alternative-lifestyle-AI/raw/main/docs/The_Big_Pink_Book.pdf",
     "markdown_url": "https://github.com/AmazighOasisAzul/Alternative-lifestyle-AI/raw/main/docs/The_Big_Pink_Book.md",
@@ -582,7 +784,8 @@ ry_celibacy", "Looksmaxxing", "Orthotropics",
 
 # Web Search Configuration
 WEB_SEARCH_CONFIG = {
-    "user_agent": "AlternativeLifestyleAI/1.0",
+    "user_
+agent": "AlternativeLifestyleAI/1.0",
     "rate_limit": 1.0,
     "jitter": True,
     "fetch_content": True,
